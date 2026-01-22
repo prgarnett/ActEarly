@@ -1,253 +1,592 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ActEarly Child Health Map</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f8f8f8;
-    }
-
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    h1 {
-      margin-top: 0;
-      font-weight: 600;
-    }
-
-    .graph-frame {
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      background: #fff;
-      height: 800px;          /* adjust if you want bigger/smaller */
-      overflow: hidden;
-      position: relative;
-      margin: 20px 0;
-    }
-
-    #container {
-      width: 100%;
-      height: 100%;
-    }
-
-    .footer-text {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 10px;
-    }
-  </style>
-
-  <!-- Import maps for Sigma & Graphology -->
-  <script type="importmap">
-    {
-      "imports": {
-        "sigma": "https://cdnjs.cloudflare.com/ajax/libs/sigma.js/3.0.0/sigma.min.js",
-        "graphology": "https://cdn.jsdelivr.net/npm/graphology@0.26.0/dist/graphology.umd.min.js",
-        "graphologyLibrary": "https://cdn.jsdelivr.net/npm/graphology-library/dist/graphology-library.min.js"
-      }
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Effects Map - Interactive Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        #container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        #title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        #description {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #description p {
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        #controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            padding: 8px 16px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        #legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-radius: 3px;
+        }
+        
+        #visualization {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .node {
+            cursor: pointer;
+        }
+        
+        .node:hover {
+            stroke: #000;
+            stroke-width: 3px;
+        }
+        
+        .node-label {
+            pointer-events: none;
+            font-size: 9px;
+            text-anchor: middle;
+            fill: #333;
+        }
+        
+        .label-background {
+            fill: white;
+            stroke: #ddd;
+            stroke-width: 0.5px;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+        
+        .timeline-label {
+            pointer-events: none;
+            font-size: 10px;
+            font-weight: bold;
+            fill: #666;
+        }
+        
+        .edge {
+            fill: none;
+            pointer-events: none;
+        }
+        
+        .edge-solid {
+            stroke: #999;
+            stroke-width: 1.5px;
+        }
+        
+        .edge-dashed {
+            stroke: #bbb;
+            stroke-width: 1.5px;
+            stroke-dasharray: 5,5;
+        }
+        
+        .timeline-edge {
+            fill: none;
+            stroke: #333;
+            stroke-width: 3px;
+            marker-end: url(#timeline-arrow);
+        }
+        
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 5px;
+            pointer-events: none;
+            font-size: 12px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+    </style>
 </head>
-
 <body>
-<div class="page">
-
-  <h1>ActEarly Child Health Map</h1>
-
-  <p>
-  The network shows the number of ActEarly projects (by node size - larger node means more ActEarly projects operating in this part of the network), that were opperating in that part of the Child Health System (as defined by <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0245577">Jessiman et. al 2021</a>).
-  
-  <p>
-    This interactive visualisation uses <strong>Sigma.js</strong> and
-    <strong>ForceAtlas2</strong> layout.  
-    Hover over any node to highlight its immediate neighbours, zoom with the mouse wheel, left click to drag the graph position.
-  </p>
-
-  <div class="graph-frame">
-    <div id="container"></div>
-  </div>
-
-  <p class="footer-text">
-    Data source: <code>graph.json</code>.  
-    Layout computed with ForceAtlas2.  
-    Node size proportional to <code>size_nolog</code>.
-  </p>
-
-</div>
-
-  <!-- Import map for Sigma, Graphology, and Graphology Library -->
-  <script type="importmap">
-    {
-      "imports": {
-        "sigma": "https://cdnjs.cloudflare.com/ajax/libs/sigma.js/3.0.0/sigma.min.js",
-        "graphology": "https://cdn.jsdelivr.net/npm/graphology@0.26.0/dist/graphology.umd.min.js",
-        "graphologyLibrary": "https://cdn.jsdelivr.net/npm/graphology-library/dist/graphology-library.min.js"
-      }
-    }
-  </script>
-</head>
-<body>
-<div id="container"></div>
-
-<script type="module">
-  // Load libraries (Sigma exports aren’t used directly here; it exposes global Sigma)
-  import * as sigma from 'sigma';
-  import 'graphology';          // UMD: attaches `graphology` to window
-  import 'graphologyLibrary';   // UMD: attaches `graphologyLibrary` to window
-
-  const Graph = graphology.Graph;
-
-  fetch('graph.json')
-    .then(r => r.json())
-    .then(data => {
-      const graph = new Graph({ type: 'undirected', allowSelfLoops: false });
-
-      // --- 1. Figure out size_nolog range for scaling ---
-      let minSize = Infinity;
-      let maxSize = -Infinity;
-
-      for (const n of data.nodes) {
-        const s = typeof n.size_nolog === 'number' ? n.size_nolog : 1;
-        if (s < minSize) minSize = s;
-        if (s > maxSize) maxSize = s;
-      }
-      if (!isFinite(minSize)) minSize = 1;
-      if (!isFinite(maxSize)) maxSize = minSize;
-
-      function mapSize(value, inMin, inMax, outMin, outMax) {
-        if (inMax === inMin) return (outMin + outMax) / 2;
-        const t = (value - inMin) / (inMax - inMin);
-        return outMin + t * (outMax - outMin);
-      }
-
-      // --- 2. Add nodes ---
-      for (const n of data.nodes) {
-        const id = String(n.id);
-        const label = n.label || n.name || id;
-        const raw = typeof n.size_nolog === 'number' ? n.size_nolog : 1;
-        const sizePx = mapSize(raw, minSize, maxSize, 4, 18);
-
-        graph.addNode(id, {
-          label,
-          x: Math.random(),
-          y: Math.random(),
-          size: sizePx,
-          color: 'orange'
+    <div id="container">
+        <div id="title">Ripple Effects Map - ActEarly Project Timeline</div>
+        
+        <div id="description">
+            <p>This interactive visualization shows the ripple effects of the ActEarly research project activities, outputs, impacts, and outcomes over time from 2019 to the future. Each node is aligned to its corresponding date on the timeline (left side). Use the controls below to zoom, pan, and explore the network. Due to limitations in the rendering systems this visualisation isn't perfect and tends to work better in Chrome.</p>
+        </div>
+        
+        <div id="controls">
+            <button onclick="resetZoom()">Reset Zoom</button>
+            <button onclick="fitToScreen()">Fit to Screen</button>
+            <button onclick="toggleLabels()">Toggle Labels</button>
+        </div>
+        
+        <div id="legend">
+            <div class="legend-item">
+                <div class="legend-box" style="background: #ff6b6b;"></div>
+                <span>Input</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #4ecdc4;"></div>
+                <span>Activity</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #95e1d3;"></div>
+                <span>Output</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #ffe66d;"></div>
+                <span>Impact</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #a8e6cf;"></div>
+                <span>Outcome</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #dfe6e9;"></div>
+                <span>Timeline</span>
+            </div>
+        </div>
+        
+        <div id="visualization"></div>
+    </div>
+    
+    <div class="tooltip" id="tooltip" style="display: none;"></div>
+    
+    <script>
+        // Configuration
+        const width = window.innerWidth - 40;
+        const height = window.innerHeight - 300;
+        const timelineWidth = 150;
+        
+        let showLabels = true;
+        let labelsGroup;
+        
+        // Color mapping for node types
+        const colors = {
+            'Input': '#ff6b6b',
+            'Activity': '#4ecdc4',
+            'Output': '#95e1d3',
+            'Impact': '#ffe66d',
+            'Outcome': '#a8e6cf',
+            'timeline': '#dfe6e9'
+        };
+        
+        // Create SVG
+        const svg = d3.select("#visualization")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+        
+        // Add arrow marker for timeline
+        svg.append("defs").append("marker")
+            .attr("id", "timeline-arrow")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 8)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "#333");
+        
+        // Add arrow markers for edges
+        svg.append("defs").append("marker")
+            .attr("id", "arrow")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 15)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "#999");
+        
+        // Create main group for zoom/pan
+        const g = svg.append("g");
+        
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+        
+        svg.call(zoom);
+        
+        // Tooltip
+        const tooltip = d3.select("#tooltip");
+        
+        // Store data globally for drag function
+        let graphData;
+        
+        // Load data and create visualization
+        d3.json("rem_graph_data.json").then(data => {
+            graphData = data;
+            console.log("Loaded data:", data);
+            
+            // Separate timeline nodes from regular nodes
+            const timelineNodes = data.nodes.filter(n => n.shape === 'timeline');
+            const regularNodes = data.nodes.filter(n => n.shape !== 'timeline');
+            
+            // Calculate positions for timeline (vertical on the left)
+            const timelineY = d3.scalePoint()
+                .domain(data.dates)
+                .range([50, height - 50])
+                .padding(0.5);
+            
+            // Position timeline nodes
+            timelineNodes.forEach(node => {
+                node.x = timelineWidth / 2;
+                node.y = timelineY(node.id);
+                node.fx = node.x; // Fix position
+                node.fy = node.y;
+            });
+            
+            // Create a date-to-Y mapping for positioning regular nodes
+            const datePositions = {};
+            data.dates.forEach(date => {
+                datePositions[date] = timelineY(date);
+            });
+            
+            // Position regular nodes based on their rank
+            regularNodes.forEach(node => {
+                const rankedDate = data.ranks[node.id];
+                if (rankedDate) {
+                    node.fy = datePositions[rankedDate]; // Fix Y position to align with date
+                }
+            });
+            
+            // Combine all nodes
+            const allNodes = [...timelineNodes, ...regularNodes];
+            
+            // Separate timeline edges from regular edges
+            const timelineEdges = [];
+            const regularEdges = [];
+            
+            data.edges.forEach(edge => {
+                const isTimelineEdge = data.dates.includes(edge.source) && data.dates.includes(edge.target);
+                if (isTimelineEdge) {
+                    timelineEdges.push(edge);
+                } else {
+                    regularEdges.push(edge);
+                }
+            });
+            
+            // Create force simulation
+            const simulation = d3.forceSimulation(allNodes)
+                .force("link", d3.forceLink(regularEdges)
+                    .id(d => d.id)
+                    .distance(100))
+                .force("charge", d3.forceManyBody()
+                    .strength(-300))
+                .force("x", d3.forceX()
+                    .x(d => d.shape === 'timeline' ? timelineWidth / 2 : width / 2)
+                    .strength(d => d.shape === 'timeline' ? 1 : 0.1))
+                .force("y", d3.forceY()
+                    .y(d => d.fy || height / 2)
+                    .strength(d => d.fy ? 1 : 0.1))
+                .force("collision", d3.forceCollide().radius(45));
+            
+            // Draw regular edges first (bottom layer)
+            const edgeGroup = g.append("g").attr("class", "edges");
+            const edgeSelection = edgeGroup.selectAll(".edge")
+                .data(regularEdges)
+                .join("path")
+                .attr("class", d => `edge edge-${d.style}`)
+                .attr("marker-end", d => d.style === 'solid' ? "url(#arrow)" : null);
+            
+            // Draw regular nodes (middle layer)
+            const nodeGroup = g.append("g").attr("class", "nodes");
+            const nodeSelection = nodeGroup.selectAll(".node")
+                .data(regularNodes)
+                .join("rect")
+                .attr("class", "node")
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("rx", 3)
+                .attr("fill", d => colors[d.shape] || '#999')
+                .attr("stroke", "#333")
+                .attr("stroke-width", 1)
+                .on("mouseover", (event, d) => {
+                    tooltip
+                        .style("display", "block")
+                        .html(`<strong>${d.label}</strong><br/>Type: ${d.shape}`);
+                })
+                .on("mousemove", (event) => {
+                    tooltip
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 10) + "px");
+                })
+                .on("mouseout", () => {
+                    tooltip.style("display", "none");
+                })
+                .call(drag(simulation));
+            
+            // Draw regular node labels with backgrounds
+            labelsGroup = g.append("g").attr("class", "labels");
+            
+            // Create label data with computed text
+            const labelData = regularNodes.map(d => ({
+                node: d,
+                text: d.label.length > 25 ? d.label.substring(0, 25) + '...' : d.label
+            }));
+            
+            // Add background rectangles for labels
+            const labelBackgrounds = labelsGroup.selectAll(".label-background")
+                .data(labelData)
+                .join("rect")
+                .attr("class", "label-background")
+                .attr("rx", 2);
+            
+            // Add text labels
+            const labelSelection = labelsGroup.selectAll(".node-label")
+                .data(labelData)
+                .join("text")
+                .attr("class", "node-label")
+                .attr("dy", "0.35em")
+                .text(d => d.text);
+            
+            // Calculate label dimensions after rendering
+            labelSelection.each(function(d) {
+                const bbox = this.getBBox();
+                d.width = bbox.width + 6;
+                d.height = bbox.height + 4;
+            });
+            
+            // Draw timeline edges (above regular network)
+            const timelineEdgeGroup = g.append("g").attr("class", "timeline-edges");
+            const timelineEdgeSelection = timelineEdgeGroup.selectAll(".timeline-edge")
+                .data(timelineEdges)
+                .join("path")
+                .attr("class", "timeline-edge");
+            
+            // Draw timeline nodes (top layer)
+            const timelineNodeGroup = g.append("g").attr("class", "timeline-nodes");
+            const timelineNodeSelection = timelineNodeGroup.selectAll(".timeline-node")
+                .data(timelineNodes)
+                .join("rect")
+                .attr("class", "node timeline-node")
+                .attr("width", 120)
+                .attr("height", 30)
+                .attr("rx", 3)
+                .attr("fill", colors['timeline'])
+                .attr("stroke", "#333")
+                .attr("stroke-width", 2)
+                .on("mouseover", (event, d) => {
+                    tooltip
+                        .style("display", "block")
+                        .html(`<strong>${d.label}</strong><br/>Type: ${d.shape}`);
+                })
+                .on("mousemove", (event) => {
+                    tooltip
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 10) + "px");
+                })
+                .on("mouseout", () => {
+                    tooltip.style("display", "none");
+                });
+            
+            // Draw timeline labels (very top layer)
+            const timelineLabelGroup = g.append("g").attr("class", "timeline-labels");
+            const timelineLabelSelection = timelineLabelGroup.selectAll(".timeline-label")
+                .data(timelineNodes)
+                .join("text")
+                .attr("class", "timeline-label")
+                .attr("dy", 5)
+                .text(d => d.label);
+            
+            // Helper function to create curved path
+            function createCurvedPath(x1, y1, x2, y2) {
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                const dr = Math.sqrt(dx * dx + dy * dy);
+                
+                // Create a gentle curve
+                const curve = dr * 0.3;
+                const midX = (x1 + x2) / 2;
+                const midY = (y1 + y2) / 2;
+                
+                // Offset the control point perpendicular to the line
+                const offsetX = -dy / dr * curve;
+                const offsetY = dx / dr * curve;
+                
+                const cx = midX + offsetX;
+                const cy = midY + offsetY;
+                
+                return `M ${x1},${y1} Q ${cx},${cy} ${x2},${y2}`;
+            }
+            
+            // Update positions on simulation tick
+            simulation.on("tick", () => {
+                // Update timeline edges
+                timelineEdgeSelection
+                    .attr("d", d => {
+                        const source = allNodes.find(n => n.id === d.source);
+                        const target = allNodes.find(n => n.id === d.target);
+                        return createCurvedPath(source.x, source.y, target.x, target.y);
+                    });
+                
+                // Update regular edges
+                edgeSelection
+                    .attr("d", d => {
+                        return createCurvedPath(d.source.x, d.source.y, d.target.x, d.target.y);
+                    });
+                
+                // Update regular nodes
+                nodeSelection
+                    .attr("x", d => d.x - 7.5)
+                    .attr("y", d => d.y - 7.5);
+                
+                // Update regular node label backgrounds
+                labelBackgrounds
+                    .attr("x", d => d.node.x - d.width / 2)
+                    .attr("y", d => d.node.y + 15)
+                    .attr("width", d => d.width)
+                    .attr("height", d => d.height);
+                
+                // Update regular node labels
+                labelSelection
+                    .attr("x", d => d.node.x)
+                    .attr("y", d => d.node.y + 15 + d.height / 2);
+                
+                // Update timeline nodes
+                timelineNodeSelection
+                    .attr("x", d => d.x - 60)
+                    .attr("y", d => d.y - 15);
+                
+                // Update timeline labels
+                timelineLabelSelection
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y);
+            });
+            
+            // Fit to screen on load
+            setTimeout(() => fitToScreen(), 1000);
         });
-      }
-
-      // --- 3. Add edges (FIXED: use addEdge(source, target, attrs)) ---
-      for (const e of data.edges) {
-        const source = String(e.source);
-        const target = String(e.target);
-
-        if (!graph.hasNode(source) || !graph.hasNode(target)) continue;
-        if (graph.hasEdge(source, target)) continue;  // avoid duplicates if any
-
-        graph.addEdge(source, target, {
-          size: 1,
-          color: '#bbbbbb'
-        });
-      }
-
-      // --- 4. ForceAtlas2 layout ---
-      const settings = graphologyLibrary.layoutForceAtlas2.inferSettings(graph);
-      graphologyLibrary.layoutForceAtlas2.assign(graph, {
-        iterations: 200,   // increase for smoother layout if performance is fine
-        settings
-      });
-
-      // --- 5. Create Sigma renderer ---
-      const container = document.getElementById('container');
-      const renderer = new Sigma(graph, container, {
-          renderEdgeLabels: false,
-          defaultNodeColor: 'orange',
-
-          // Show labels aggressively
-          labelDensity: 1,               // 0–1, higher = more labels
-          labelGridCellSize: 20,         // smaller cells = more labels can fit
-          labelRenderedSizeThreshold: 0, // always render labels, even when zoomed out
-
-          // Optional: slightly smaller text if things feel cluttered
-          labelSize: 10
-        });
-
-      // --- 6. Hover highlighting: keep node + neighbors, fade rest ---
-      const state = {
-        hoveredNode: null,
-        hoveredNeighbors: new Set()
-      };
-
-      renderer.setSetting('nodeReducer', (node, data) => {
-        const res = { ...data };
-
-        if (state.hoveredNode === null) {
-          return res; // no hover → normal view
+        
+        // Drag behavior
+        function drag(simulation) {
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                if (!d.fy) d.fy = d.y; // Only fix Y if not already fixed
+            }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                if (!graphData.ranks[d.id]) { // Only allow Y movement if not ranked to timeline
+                    d.fy = event.y;
+                }
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                if (d.shape !== 'timeline' && !graphData.ranks[d.id]) {
+                    d.fx = null;
+                    d.fy = null;
+                }
+            }
+            
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
         }
-
-        const isHovered = node === state.hoveredNode;
-        const isNeighbor = state.hoveredNeighbors.has(node);
-
-        if (!isHovered && !isNeighbor) {
-          // Fade non-neighbors
-          res.color = '#dddddd';
-          res.label = '';   // hide labels for faded nodes
-          res.zIndex = 0;
-        } else {
-          // Emphasize hovered node and neighbors
-          res.color = 'orange';
-          res.zIndex = 1;
+        
+        // Control functions
+        function resetZoom() {
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity);
         }
-
-        return res;
-      });
-
-      renderer.setSetting('edgeReducer', (edge, data) => {
-        const res = { ...data };
-
-        if (state.hoveredNode === null) {
-          return res;
+        
+        function fitToScreen() {
+            const bounds = g.node().getBBox();
+            const fullWidth = width;
+            const fullHeight = height;
+            const midX = bounds.x + bounds.width / 2;
+            const midY = bounds.y + bounds.height / 2;
+            
+            const scale = 0.9 / Math.max(bounds.width / fullWidth, bounds.height / fullHeight);
+            const translate = [fullWidth / 2 - scale * midX, fullHeight / 2 - scale * midY];
+            
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
         }
-
-        const source = graph.source(edge);
-        const target = graph.target(edge);
-        const keep =
-          source === state.hoveredNode ||
-          target === state.hoveredNode ||
-          (state.hoveredNeighbors.has(source) &&
-           state.hoveredNeighbors.has(target));
-
-        if (!keep) {
-          res.color = '#eeeeee';
-        } else {
-          res.color = '#bbbbbb';
+        
+        function toggleLabels() {
+            showLabels = !showLabels;
+            const labelsGroup = g.select(".labels");
+            if (labelsGroup) {
+                labelsGroup.style("display", showLabels ? "block" : "none");
+            }
+            const timelineLabelGroup = g.select(".timeline-labels");
+            if (timelineLabelGroup) {
+                timelineLabelGroup.style("display", showLabels ? "block" : "none");
+            }
         }
-
-        return res;
-      });
-
-      renderer.on('enterNode', ({ node }) => {
-        state.hoveredNode = node;
-        state.hoveredNeighbors = new Set(graph.neighbors(node));
-        renderer.refresh();
-      });
-
-      renderer.on('leaveNode', () => {
-        state.hoveredNode = null;
-        state.hoveredNeighbors = new Set();
-        renderer.refresh();
-      });
-    })
-    .catch(err => {
-      console.error('Error loading graph.json:', err);
-    });
-</script>
+    </script>
 </body>
 </html>
