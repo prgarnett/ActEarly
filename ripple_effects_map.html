@@ -26,6 +26,23 @@
             margin-bottom: 10px;
         }
         
+        #description {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #description p {
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        
         #controls {
             display: flex;
             gap: 10px;
@@ -151,6 +168,10 @@
 <body>
     <div id="container">
         <div id="title">Ripple Effects Map - ActEarly Project Timeline</div>
+        
+        <div id="description">
+            <p>This interactive visualization shows the ripple effects of the ActEarly research project activities, outputs, impacts, and outcomes over time from 2019 to the future. Each node is aligned to its corresponding date on the timeline (left side). Use the controls below to zoom, pan, and explore the network. Due to limitations in the rendering systems this visualisation isn't perfect and tends to work better in Chrome.</p>
+        </div>
         
         <div id="controls">
             <button onclick="resetZoom()">Reset Zoom</button>
