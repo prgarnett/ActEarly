@@ -92,8 +92,17 @@
         
         .node-label {
             pointer-events: none;
-            font-size: 11px;
+            font-size: 9px;
             text-anchor: middle;
+            fill: #333;
+        }
+        
+        .label-background {
+            fill: white;
+            stroke: #ddd;
+            stroke-width: 0.5px;
+            opacity: 0.9;
+            pointer-events: none;
         }
         
         .timeline-label {
@@ -247,8 +256,12 @@
         // Tooltip
         const tooltip = d3.select("#tooltip");
         
+        // Store data globally for drag function
+        let graphData;
+        
         // Load data and create visualization
         d3.json("rem_graph_data.json").then(data => {
+            graphData = data;
             console.log("Loaded data:", data);
             
             // Separate timeline nodes from regular nodes
@@ -312,7 +325,7 @@
                 .force("y", d3.forceY()
                     .y(d => d.fy || height / 2)
                     .strength(d => d.fy ? 1 : 0.1))
-                .force("collision", d3.forceCollide().radius(30));
+                .force("collision", d3.forceCollide().radius(45));
             
             // Draw regular edges first (bottom layer)
             const edgeGroup = g.append("g").attr("class", "edges");
@@ -349,17 +362,36 @@
                 })
                 .call(drag(simulation));
             
-            // Draw regular node labels
+            // Draw regular node labels with backgrounds
             labelsGroup = g.append("g").attr("class", "labels");
+            
+            // Create label data with computed text
+            const labelData = regularNodes.map(d => ({
+                node: d,
+                text: d.label.length > 25 ? d.label.substring(0, 25) + '...' : d.label
+            }));
+            
+            // Add background rectangles for labels
+            const labelBackgrounds = labelsGroup.selectAll(".label-background")
+                .data(labelData)
+                .join("rect")
+                .attr("class", "label-background")
+                .attr("rx", 2);
+            
+            // Add text labels
             const labelSelection = labelsGroup.selectAll(".node-label")
-                .data(regularNodes)
+                .data(labelData)
                 .join("text")
                 .attr("class", "node-label")
-                .attr("dy", 25)
-                .text(d => {
-                    // Truncate long labels
-                    return d.label.length > 30 ? d.label.substring(0, 30) + '...' : d.label;
-                });
+                .attr("dy", "0.35em")
+                .text(d => d.text);
+            
+            // Calculate label dimensions after rendering
+            labelSelection.each(function(d) {
+                const bbox = this.getBBox();
+                d.width = bbox.width + 6;
+                d.height = bbox.height + 4;
+            });
             
             // Draw timeline edges (above regular network)
             const timelineEdgeGroup = g.append("g").attr("class", "timeline-edges");
@@ -445,10 +477,17 @@
                     .attr("x", d => d.x - 7.5)
                     .attr("y", d => d.y - 7.5);
                 
+                // Update regular node label backgrounds
+                labelBackgrounds
+                    .attr("x", d => d.node.x - d.width / 2)
+                    .attr("y", d => d.node.y + 15)
+                    .attr("width", d => d.width)
+                    .attr("height", d => d.height);
+                
                 // Update regular node labels
                 labelSelection
-                    .attr("x", d => d.x)
-                    .attr("y", d => d.y);
+                    .attr("x", d => d.node.x)
+                    .attr("y", d => d.node.y + 15 + d.height / 2);
                 
                 // Update timeline nodes
                 timelineNodeSelection
@@ -475,14 +514,14 @@
             
             function dragged(event, d) {
                 d.fx = event.x;
-                if (!data.ranks[d.id]) { // Only allow Y movement if not ranked to timeline
+                if (!graphData.ranks[d.id]) { // Only allow Y movement if not ranked to timeline
                     d.fy = event.y;
                 }
             }
             
             function dragended(event, d) {
                 if (!event.active) simulation.alphaTarget(0);
-                if (d.shape !== 'timeline' && !data.ranks[d.id]) {
+                if (d.shape !== 'timeline' && !graphData.ranks[d.id]) {
                     d.fx = null;
                     d.fy = null;
                 }
@@ -518,6 +557,7 @@
         
         function toggleLabels() {
             showLabels = !showLabels;
+            const labelsGroup = g.select(".labels");
             if (labelsGroup) {
                 labelsGroup.style("display", showLabels ? "block" : "none");
             }
