@@ -314,14 +314,7 @@
                     .strength(d => d.fy ? 1 : 0.1))
                 .force("collision", d3.forceCollide().radius(30));
             
-            // Draw timeline edges
-            const timelineEdgeGroup = g.append("g").attr("class", "timeline-edges");
-            const timelineEdgeSelection = timelineEdgeGroup.selectAll(".timeline-edge")
-                .data(timelineEdges)
-                .join("path")
-                .attr("class", "timeline-edge");
-            
-            // Draw regular edges
+            // Draw regular edges first (bottom layer)
             const edgeGroup = g.append("g").attr("class", "edges");
             const edgeSelection = edgeGroup.selectAll(".edge")
                 .data(regularEdges)
@@ -329,14 +322,14 @@
                 .attr("class", d => `edge edge-${d.style}`)
                 .attr("marker-end", d => d.style === 'solid' ? "url(#arrow)" : null);
             
-            // Draw nodes
+            // Draw regular nodes (middle layer)
             const nodeGroup = g.append("g").attr("class", "nodes");
             const nodeSelection = nodeGroup.selectAll(".node")
-                .data(allNodes)
+                .data(regularNodes)
                 .join("rect")
                 .attr("class", "node")
-                .attr("width", d => d.shape === 'timeline' ? 120 : 15)
-                .attr("height", d => d.shape === 'timeline' ? 30 : 15)
+                .attr("width", 15)
+                .attr("height", 15)
                 .attr("rx", 3)
                 .attr("fill", d => colors[d.shape] || '#999')
                 .attr("stroke", "#333")
@@ -356,18 +349,59 @@
                 })
                 .call(drag(simulation));
             
-            // Draw labels
+            // Draw regular node labels
             labelsGroup = g.append("g").attr("class", "labels");
             const labelSelection = labelsGroup.selectAll(".node-label")
-                .data(allNodes)
+                .data(regularNodes)
                 .join("text")
-                .attr("class", d => d.shape === 'timeline' ? 'timeline-label' : 'node-label')
-                .attr("dy", d => d.shape === 'timeline' ? 5 : 25)
+                .attr("class", "node-label")
+                .attr("dy", 25)
                 .text(d => {
-                    if (d.shape === 'timeline') return d.label;
-                    // Truncate long labels for non-timeline nodes
+                    // Truncate long labels
                     return d.label.length > 30 ? d.label.substring(0, 30) + '...' : d.label;
                 });
+            
+            // Draw timeline edges (above regular network)
+            const timelineEdgeGroup = g.append("g").attr("class", "timeline-edges");
+            const timelineEdgeSelection = timelineEdgeGroup.selectAll(".timeline-edge")
+                .data(timelineEdges)
+                .join("path")
+                .attr("class", "timeline-edge");
+            
+            // Draw timeline nodes (top layer)
+            const timelineNodeGroup = g.append("g").attr("class", "timeline-nodes");
+            const timelineNodeSelection = timelineNodeGroup.selectAll(".timeline-node")
+                .data(timelineNodes)
+                .join("rect")
+                .attr("class", "node timeline-node")
+                .attr("width", 120)
+                .attr("height", 30)
+                .attr("rx", 3)
+                .attr("fill", colors['timeline'])
+                .attr("stroke", "#333")
+                .attr("stroke-width", 2)
+                .on("mouseover", (event, d) => {
+                    tooltip
+                        .style("display", "block")
+                        .html(`<strong>${d.label}</strong><br/>Type: ${d.shape}`);
+                })
+                .on("mousemove", (event) => {
+                    tooltip
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 10) + "px");
+                })
+                .on("mouseout", () => {
+                    tooltip.style("display", "none");
+                });
+            
+            // Draw timeline labels (very top layer)
+            const timelineLabelGroup = g.append("g").attr("class", "timeline-labels");
+            const timelineLabelSelection = timelineLabelGroup.selectAll(".timeline-label")
+                .data(timelineNodes)
+                .join("text")
+                .attr("class", "timeline-label")
+                .attr("dy", 5)
+                .text(d => d.label);
             
             // Helper function to create curved path
             function createCurvedPath(x1, y1, x2, y2) {
@@ -406,13 +440,23 @@
                         return createCurvedPath(d.source.x, d.source.y, d.target.x, d.target.y);
                     });
                 
-                // Update nodes
+                // Update regular nodes
                 nodeSelection
-                    .attr("x", d => d.x - (d.shape === 'timeline' ? 60 : 7.5))
-                    .attr("y", d => d.y - (d.shape === 'timeline' ? 15 : 7.5));
+                    .attr("x", d => d.x - 7.5)
+                    .attr("y", d => d.y - 7.5);
                 
-                // Update labels
+                // Update regular node labels
                 labelSelection
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y);
+                
+                // Update timeline nodes
+                timelineNodeSelection
+                    .attr("x", d => d.x - 60)
+                    .attr("y", d => d.y - 15);
+                
+                // Update timeline labels
+                timelineLabelSelection
                     .attr("x", d => d.x)
                     .attr("y", d => d.y);
             });
@@ -476,6 +520,10 @@
             showLabels = !showLabels;
             if (labelsGroup) {
                 labelsGroup.style("display", showLabels ? "block" : "none");
+            }
+            const timelineLabelGroup = g.select(".timeline-labels");
+            if (timelineLabelGroup) {
+                timelineLabelGroup.style("display", showLabels ? "block" : "none");
             }
         }
     </script>
