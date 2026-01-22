@@ -1,0 +1,2250 @@
+{
+  "nodes": [
+    {
+      "id": "Node_0",
+      "label": "Covid-19 pandemic",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_1",
+      "label": "Covid Scientific Advisory Group",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_2",
+      "label": "Covid-19 studies delivered",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_3",
+      "label": "Supporting Young Bradford Project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_4",
+      "label": "Launch of  West Yorkshire Scientific Advisory Group",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_5",
+      "label": "West Yorkshire Scientific Advisory Group to provide policy advice to West Yorkshire Combined Authority and West Yorkshire Health and Care Partnership to improve health inqualities",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_6",
+      "label": "Research Fellow joins",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_7",
+      "label": "Community Soft Intelligence Group established",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_8",
+      "label": "Paper on vaccine hesitancy published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_9",
+      "label": "Development of  Centre for Coproduction and Peer Research",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_10",
+      "label": "Local Authority Research System project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_11",
+      "label": "Local Authority Research System Report",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_12",
+      "label": "CONNECTED Bradford",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_13",
+      "label": "Data Intelligence Group created",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_14",
+      "label": "Secure data environment",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_15",
+      "label": "Improved data access and storage",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_16",
+      "label": "Health Determinants Research Collaboration awarded (Bradford)",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_17",
+      "label": "Unlocking data project starts",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_18",
+      "label": "Unlocking data paper published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_19",
+      "label": "The effectiveness evaluation of the Join Us: Move Play (JU:MP) programme",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_20",
+      "label": "Bradford Whole System Physical Activity Strategy Group",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_21",
+      "label": "Evaluation theme set up",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_22",
+      "label": "Paper on Ripple Effects Mapping published",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_23",
+      "label": "Paper on the development of core outcomes for early life health and wellbeing published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_24",
+      "label": "Research Fellow joined",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_25",
+      "label": "Bradford Centre for Qualitative Research set up",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_26",
+      "label": "Open Space events (engagement with communities)",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_27",
+      "label": "Development of Co-production strategy",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_28",
+      "label": "Integrated Care System, Bradford Metropolitan District Council, and London Borough of Tower Hamlets commit to Coproduction principles",
+      "shape": "Outcome"
+    },
+    {
+      "id": "Node_29",
+      "label": "Co-production strategy principles used within Citizen Science PhD as part of Join Us: Move Play (JU:MP) programme",
+      "shape": "Outcome"
+    },
+    {
+      "id": "Node_30",
+      "label": "Writing retreat for Research Fellows (1)",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_31",
+      "label": "Less silo working with improved data linkage of standardised routine data",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_32",
+      "label": "Play in Urban Spaces for Health project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_33",
+      "label": "Stage 2 NIHR grant to fund pilot of Play in Urban Spaces for Health (PUSH)",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_34",
+      "label": "Fair Food Futures project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_35",
+      "label": "Embedded evaluation researcher role created within Bradford Council",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_36",
+      "label": "Healthy School Streets project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_38",
+      "label": "Evaluation of interventions to improve neighbourhood streets",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_39",
+      "label": "ActEarly Co-Director change (addition of Queen Mary University of London as partner)",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_40",
+      "label": "Food and Healthy Weight theme set up",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_41",
+      "label": "Research Fellow applies for fellowship",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_42",
+      "label": "Research Fellow joins Food and Healthy Weight Theme",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_43",
+      "label": "National Child Measurement Programme report finalised and presented to Office for Health Improvement and Disparities",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_44",
+      "label": "NIHR Food Improvement Goals in Schools 2 bid awarded",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_45",
+      "label": "Fix our Food project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_46",
+      "label": "Connects Food project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_47",
+      "label": "Tower Hamlets approves Universal Free School Meals in secondary schools",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_48",
+      "label": "Bradford Food Symposium",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_49",
+      "label": "Parliamentary event with citizen science Free School Meal allowance project",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_50",
+      "label": "Health Determinants Research Collaboration awarded in Tower Hamlets",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_51",
+      "label": "Joint workshop at Toynbee hall 2 Health Determinants Research Collaboration, Tower Hamlets and Bradford)",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_52",
+      "label": "Community researcher training at Queen Mary London University",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_54",
+      "label": "Bromley-by-Bow community centre -Best Start on Life- project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_55",
+      "label": "Play and Physical activity theme set up",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_56",
+      "label": "Tower Hamlets Health and wellbeing strategy published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_57",
+      "label": "National Food and obesity strategy published",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_58",
+      "label": "Meta-narrative review of built environment and child health",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_59",
+      "label": "Systematic review of street interventions and child health",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_60",
+      "label": "London Programme Manager joins ActEarly",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_61",
+      "label": "ActEarly communications strategy created",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_62",
+      "label": "Health Impact Assessment in Tower Hamlets process evaluation",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_63",
+      "label": "Health Impact Assessment policy brief published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_64",
+      "label": "Health Impact Assessment workshop with stakeholders",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_65",
+      "label": "Tower Hamlets Health Impact Assessement Officer left council",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_66",
+      "label": "Spatial planning and Health manager post created",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_67",
+      "label": "Connected Bradford Health and Environment project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_68",
+      "label": "Research Fellow starts",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_69",
+      "label": "Built Environment in Bradford project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_70",
+      "label": "Youtube video on measuring the built environment presented in Tower Hamlets",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_71",
+      "label": "Research Fellow leaves ActEarly",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_72",
+      "label": "Presentation on the Built Environment project to Public Health Team in Tower Hamlets",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_73",
+      "label": "PhD  project in Children\u2019s eating habits",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_74",
+      "label": "Food Improvement Goals in Schools project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_75",
+      "label": "Early learning project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_76",
+      "label": "Community researcher posts created",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_77",
+      "label": "Thames River Showcase on Overcrowding",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_78",
+      "label": "Finance restructure at Queen Mary University of London",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_79",
+      "label": "Citizen Science Research fellow leaves",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_80",
+      "label": "Exposure to fast food outlets and childhood obesity presentation at UK Public Health Science conference",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_81",
+      "label": "Research Active Schools in Tower Hamlets",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_82",
+      "label": "PhD researcher presents at London Assembly Conference",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_83",
+      "label": "Bromley-By-Bow Community Spring Festival",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_84",
+      "label": "Festival of Communities at Queen Mary University London",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_85",
+      "label": "Family health and overcrowding qualitative project in Tower Hamlets and Islington",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_86",
+      "label": "Early years access project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_87",
+      "label": "Healthier, Wealthier Families project pilot",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_88",
+      "label": "Co-production strategy adopted by London Borough of Tower Hamlets",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_89",
+      "label": "Research Assistant joins Actearly",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_90",
+      "label": "Co-production metaevaluation project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_91",
+      "label": "Writing retreat (2)",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_92",
+      "label": "Presentation of Early Childhood Education Care mapping at UK Prevention Research Partnership Conference",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_93",
+      "label": "Research-on-Research project grant proposal",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_94",
+      "label": "Meta-evaluation protocol paper published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_95",
+      "label": "Families action plan workshops with Bromley-by-Bow Community Centre",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_97",
+      "label": "Parent Power Project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_101",
+      "label": "Political administration change",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_102",
+      "label": "Paper on the impact of pandemic lockdowns on families published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_103",
+      "label": "Family Hubs",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_104",
+      "label": "NIHR application for Healthier Wealthier Families RCT",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_105",
+      "label": "Parent Power report published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_106",
+      "label": "Presentation on community research",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_107",
+      "label": "Community engagement assistants contribution on projects",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_108",
+      "label": "Data agreement with Tower Hamlets is signed",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_109",
+      "label": "Release of environmental indicator dataset in Born in Bradford and Connected Bradford",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_110",
+      "label": "Early Childhood Education and Care project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_111",
+      "label": "Families in Tower Hamlets project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_112",
+      "label": "Year like no other book published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_113",
+      "label": "Overcrowding and mental heath in covid-19 paper published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_114",
+      "label": "Paper on mental health in ethnically diverse mothers during covid-19 published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_115",
+      "label": "Theme Lead joined PIVOTAL project",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_116",
+      "label": "Policy brief on child wellbeing and play",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_117",
+      "label": "Paper on family display during the pandemic being written",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_118",
+      "label": "Future projects with Tower Hamlets being explored",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_119",
+      "label": "Families in Newham study running in parallel to Families in Tower Hamlets",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_120",
+      "label": "Paper on the impact of COVID-19 on the provision of food aid in Bradford published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_121",
+      "label": "Qualitative Research fellows recruited",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_122",
+      "label": "PhD student starts",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_123",
+      "label": "International working group",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_124",
+      "label": "Large scale trial (Healthier Wealthier Families)",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_125",
+      "label": "Conversations with UCL Health justice partnership, Royal foundation on Early Childhood, Hackney, London mayors office, maternity action",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_126",
+      "label": "NIHR Population Health cluster project: Healthy Urban Environments",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_127",
+      "label": "Synergies between housing and local environments for enhanced child wellbeing project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_128",
+      "label": "Co-location of welfare benefits project to potentially be replicated in Tower Hamlets",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_129",
+      "label": "UCL -Housing and Health- projects",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_130",
+      "label": "Realist review of overcrowding interventions project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_131",
+      "label": "Presenting findings of qualitative overcrowding project to Tower Hamlets authorities",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_132",
+      "label": "Book being developed on Urban childhoods",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_133",
+      "label": "Collaboration between Early Career Researchers and senior researchers",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_134",
+      "label": "Public Health Research Programme Public perception of data use award (shortlisted)",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_135",
+      "label": "ActEarly Co-investigators involved in Covid-19 Scientific Advisory Group",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_136",
+      "label": "NIHR Food insecurity grant",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_137",
+      "label": "Universal Basic Income for young adults idea formed",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_138",
+      "label": "Healthy livelihoods theme set up",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_139",
+      "label": "Benefits in health settings project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_140",
+      "label": "PhD student obtained studentship to work on the co-location of welfare benefits project",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_141",
+      "label": "Implement survey in GP practices to pilot",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_142",
+      "label": "Review of the effectiveness and experiences of welfare advice services co-located in health settings published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_143",
+      "label": "Healthier, Wealthier families project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_144",
+      "label": "Northern Health Services Alliance collaboration",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_145",
+      "label": "Principal Investigator leading Child of the North project",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_146",
+      "label": "Child of the North All Party Parliamentary Group",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_147",
+      "label": "Child of the North report published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_148",
+      "label": "Roundtable on Child poverty as evidence at parliamentary debate to influence budget",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_149",
+      "label": "Glasses in Classes Randomised Controlled Trial",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_150",
+      "label": "Department of Education rolls out Glasses in Classes nationally",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_151",
+      "label": "Built evaluation capacity in local authorities",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_152",
+      "label": "Food and Healthy Weight Theme/ Evaluation lead joins",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_153",
+      "label": "Co-investigator involved in cross-cutting theme",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_154",
+      "label": "Action on Salt and Sugar project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_155",
+      "label": "Work on influencing commercial mandate related to Action on Sugar and Salt",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_156",
+      "label": "Research Fellows recruited",
+      "shape": "Input"
+    },
+    {
+      "id": "Node_157",
+      "label": "Connected Bradford data visualisations",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_158",
+      "label": "Core outcome set database will be public resource",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_159",
+      "label": "ActEarly Methods Club launched",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_160",
+      "label": "Tower Hamlets Council adopts ActEarly Core Outcomes Set in their reporting outcomes framework/ annual indicator",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_161",
+      "label": "Tower Hamlets interested in Ripple Effects Mapping methodology",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_162",
+      "label": "Universal Basic Income and mental health project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_163",
+      "label": "Delays in Universal Basic Income plans",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_164",
+      "label": "Papers on universal basic income and mental health published",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_165",
+      "label": "Started working with Lancaster researcher on Universal Basic Income project",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_166",
+      "label": "Collaboration with a group in Northumberland",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_167",
+      "label": "Collaboration on simulation of potential impacts",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_168",
+      "label": "Healthy Livelihoods Policy Brief",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_169",
+      "label": "Advisory group for potential Bradford Universal Basic Income micropilot",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_170",
+      "label": "Work with Compass think tank",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_171",
+      "label": "Book on Universal Basic Income and mental health",
+      "shape": "Output"
+    },
+    {
+      "id": "Node_172",
+      "label": "Auto-enrolment to free school meals project",
+      "shape": "Activity"
+    },
+    {
+      "id": "Node_173",
+      "label": "Identified families who were not eligible for Free School Meals",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_174",
+      "label": "Children now getting Free School Meals",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_175",
+      "label": "Additional funding for school food, vouchers, etc.",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_176",
+      "label": "15 areas signed up to auto-enrolment to free school meals",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_177",
+      "label": "Bradford planning on launching auto-enrolment to free school meals in 2024",
+      "shape": "Impact"
+    },
+    {
+      "id": "Node_178",
+      "label": "Research fellow works on Covid 19 studies",
+      "shape": "Input"
+    },
+    {
+      "id": "2019-09-01",
+      "label": "2019-09-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2019-10-01",
+      "label": "2019-10-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2019-12-01",
+      "label": "2019-12-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-01-01",
+      "label": "2020-01-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-02-01",
+      "label": "2020-02-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-03-01",
+      "label": "2020-03-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-04-01",
+      "label": "2020-04-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-05-01",
+      "label": "2020-05-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-06-01",
+      "label": "2020-06-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-07-01",
+      "label": "2020-07-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-09-01",
+      "label": "2020-09-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-10-01",
+      "label": "2020-10-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-11-01",
+      "label": "2020-11-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2020-12-01",
+      "label": "2020-12-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-01-01",
+      "label": "2021-01-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-02-01",
+      "label": "2021-02-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-03-01",
+      "label": "2021-03-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-05-01",
+      "label": "2021-05-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-06-01",
+      "label": "2021-06-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-07-01",
+      "label": "2021-07-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-08-01",
+      "label": "2021-08-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-09-01",
+      "label": "2021-09-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-10-01",
+      "label": "2021-10-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-11-01",
+      "label": "2021-11-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2021-12-01",
+      "label": "2021-12-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-01-01",
+      "label": "2022-01-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-03-01",
+      "label": "2022-03-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-04-01",
+      "label": "2022-04-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-05-01",
+      "label": "2022-05-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-06-01",
+      "label": "2022-06-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-07-01",
+      "label": "2022-07-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-08-01",
+      "label": "2022-08-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-09-01",
+      "label": "2022-09-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-10-01",
+      "label": "2022-10-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-11-01",
+      "label": "2022-11-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2022-12-01",
+      "label": "2022-12-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-01-01",
+      "label": "2023-01-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-02-01",
+      "label": "2023-02-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-03-01",
+      "label": "2023-03-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-05-01",
+      "label": "2023-05-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-06-01",
+      "label": "2023-06-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-07-01",
+      "label": "2023-07-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-08-01",
+      "label": "2023-08-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-09-01",
+      "label": "2023-09-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-10-01",
+      "label": "2023-10-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "2023-11-01",
+      "label": "2023-11-01",
+      "shape": "timeline"
+    },
+    {
+      "id": "Future",
+      "label": "Future",
+      "shape": "timeline"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Node_0",
+      "target": "Node_1",
+      "style": "solid"
+    },
+    {
+      "source": "Node_0",
+      "target": "Node_7",
+      "style": "solid"
+    },
+    {
+      "source": "Node_1",
+      "target": "Node_2",
+      "style": "solid"
+    },
+    {
+      "source": "Node_1",
+      "target": "Node_4",
+      "style": "solid"
+    },
+    {
+      "source": "Node_4",
+      "target": "Node_5",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_6",
+      "target": "Node_8",
+      "style": "solid"
+    },
+    {
+      "source": "Node_6",
+      "target": "Node_3",
+      "style": "solid"
+    },
+    {
+      "source": "Node_6",
+      "target": "Node_9",
+      "style": "solid"
+    },
+    {
+      "source": "Node_6",
+      "target": "Node_26",
+      "style": "solid"
+    },
+    {
+      "source": "Node_7",
+      "target": "Node_6",
+      "style": "solid"
+    },
+    {
+      "source": "Node_7",
+      "target": "Node_9",
+      "style": "solid"
+    },
+    {
+      "source": "Node_10",
+      "target": "Node_11",
+      "style": "solid"
+    },
+    {
+      "source": "Node_10",
+      "target": "Node_13",
+      "style": "solid"
+    },
+    {
+      "source": "Node_10",
+      "target": "Node_12",
+      "style": "solid"
+    },
+    {
+      "source": "Node_12",
+      "target": "Node_16",
+      "style": "solid"
+    },
+    {
+      "source": "Node_16",
+      "target": "Node_13",
+      "style": "solid"
+    },
+    {
+      "source": "Node_13",
+      "target": "Node_14",
+      "style": "solid"
+    },
+    {
+      "source": "Node_14",
+      "target": "Node_15",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_16",
+      "target": "Node_9",
+      "style": "solid"
+    },
+    {
+      "source": "Node_17",
+      "target": "Node_18",
+      "style": "solid"
+    },
+    {
+      "source": "Node_19",
+      "target": "Node_20",
+      "style": "solid"
+    },
+    {
+      "source": "Node_21",
+      "target": "Node_19",
+      "style": "solid"
+    },
+    {
+      "source": "Node_21",
+      "target": "Node_22",
+      "style": "solid"
+    },
+    {
+      "source": "Node_21",
+      "target": "Node_23",
+      "style": "solid"
+    },
+    {
+      "source": "Node_2",
+      "target": "Node_178",
+      "style": "solid"
+    },
+    {
+      "source": "Node_24",
+      "target": "Node_3",
+      "style": "solid"
+    },
+    {
+      "source": "Node_21",
+      "target": "Node_24",
+      "style": "solid"
+    },
+    {
+      "source": "Node_24",
+      "target": "Node_25",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_9",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_16",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_29",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_28",
+      "style": "solid"
+    },
+    {
+      "source": "Node_30",
+      "target": "Node_9",
+      "style": "solid"
+    },
+    {
+      "source": "Node_13",
+      "target": "Node_31",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_32",
+      "target": "Node_33",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_16",
+      "target": "Node_34",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_36",
+      "target": "Node_35",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_79",
+      "target": "Node_32",
+      "style": "solid"
+    },
+    {
+      "source": "Node_38",
+      "target": "Node_36",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_45",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_46",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_48",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_172",
+      "style": "solid"
+    },
+    {
+      "source": "Node_45",
+      "target": "Node_49",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_73",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_41",
+      "style": "solid"
+    },
+    {
+      "source": "Node_41",
+      "target": "Node_42",
+      "style": "solid"
+    },
+    {
+      "source": "Node_42",
+      "target": "Node_43",
+      "style": "solid"
+    },
+    {
+      "source": "Node_73",
+      "target": "Node_82",
+      "style": "solid"
+    },
+    {
+      "source": "Node_39",
+      "target": "Node_50",
+      "style": "solid"
+    },
+    {
+      "source": "Node_51",
+      "target": "Node_50",
+      "style": "solid"
+    },
+    {
+      "source": "Node_50",
+      "target": "Node_52",
+      "style": "solid"
+    },
+    {
+      "source": "Node_54",
+      "target": "Node_27",
+      "style": "solid"
+    },
+    {
+      "source": "Node_54",
+      "target": "Node_55",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_52",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_106",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_107",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_108",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_44",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_56",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_57",
+      "style": "solid"
+    },
+    {
+      "source": "Node_40",
+      "target": "Node_74",
+      "style": "solid"
+    },
+    {
+      "source": "Node_38",
+      "target": "Node_58",
+      "style": "solid"
+    },
+    {
+      "source": "Node_38",
+      "target": "Node_59",
+      "style": "solid"
+    },
+    {
+      "source": "Node_36",
+      "target": "Node_58",
+      "style": "solid"
+    },
+    {
+      "source": "Node_39",
+      "target": "Node_60",
+      "style": "solid"
+    },
+    {
+      "source": "Node_60",
+      "target": "Node_61",
+      "style": "solid"
+    },
+    {
+      "source": "Node_62",
+      "target": "Node_63",
+      "style": "solid"
+    },
+    {
+      "source": "Node_63",
+      "target": "Node_64",
+      "style": "solid"
+    },
+    {
+      "source": "Node_64",
+      "target": "Node_65",
+      "style": "solid"
+    },
+    {
+      "source": "Node_65",
+      "target": "Node_66",
+      "style": "solid"
+    },
+    {
+      "source": "Node_109",
+      "target": "Node_67",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_75",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_79",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_79",
+      "style": "solid"
+    },
+    {
+      "source": "Node_79",
+      "target": "Node_78",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_78",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_77",
+      "style": "solid"
+    },
+    {
+      "source": "Node_68",
+      "target": "Node_80",
+      "style": "solid"
+    },
+    {
+      "source": "Node_69",
+      "target": "Node_68",
+      "style": "solid"
+    },
+    {
+      "source": "Node_68",
+      "target": "Node_70",
+      "style": "solid"
+    },
+    {
+      "source": "Node_71",
+      "target": "Node_68",
+      "style": "solid"
+    },
+    {
+      "source": "Node_70",
+      "target": "Node_72",
+      "style": "solid"
+    },
+    {
+      "source": "Node_50",
+      "target": "Node_81",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_83",
+      "style": "solid"
+    },
+    {
+      "source": "Node_50",
+      "target": "Node_84",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_85",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_86",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_87",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_88",
+      "style": "solid"
+    },
+    {
+      "source": "Node_89",
+      "target": "Node_85",
+      "style": "solid"
+    },
+    {
+      "source": "Node_45",
+      "target": "Node_47",
+      "style": "solid"
+    },
+    {
+      "source": "Node_74",
+      "target": "Node_47",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_90",
+      "style": "solid"
+    },
+    {
+      "source": "Node_76",
+      "target": "Node_91",
+      "style": "solid"
+    },
+    {
+      "source": "Node_86",
+      "target": "Node_92",
+      "style": "solid"
+    },
+    {
+      "source": "Node_27",
+      "target": "Node_94",
+      "style": "solid"
+    },
+    {
+      "source": "Node_93",
+      "target": "Node_27",
+      "style": "solid"
+    },
+    {
+      "source": "Node_95",
+      "target": "Node_54",
+      "style": "solid"
+    },
+    {
+      "source": "Node_95",
+      "target": "Node_97",
+      "style": "solid"
+    },
+    {
+      "source": "Node_101",
+      "target": "Node_85",
+      "style": "solid"
+    },
+    {
+      "source": "Node_102",
+      "target": "Node_50",
+      "style": "solid"
+    },
+    {
+      "source": "Node_87",
+      "target": "Node_104",
+      "style": "solid"
+    },
+    {
+      "source": "Node_97",
+      "target": "Node_105",
+      "style": "solid"
+    },
+    {
+      "source": "Node_1",
+      "target": "Node_135",
+      "style": "solid"
+    },
+    {
+      "source": "Node_1",
+      "target": "Node_120",
+      "style": "solid"
+    },
+    {
+      "source": "Node_120",
+      "target": "Node_136",
+      "style": "solid"
+    },
+    {
+      "source": "Node_137",
+      "target": "Node_138",
+      "style": "solid"
+    },
+    {
+      "source": "Node_138",
+      "target": "Node_139",
+      "style": "solid"
+    },
+    {
+      "source": "Node_140",
+      "target": "Node_139",
+      "style": "solid"
+    },
+    {
+      "source": "Node_140",
+      "target": "Node_141",
+      "style": "solid"
+    },
+    {
+      "source": "Node_141",
+      "target": "Node_142",
+      "style": "solid"
+    },
+    {
+      "source": "Node_142",
+      "target": "Node_128",
+      "style": "solid"
+    },
+    {
+      "source": "Node_128",
+      "target": "Node_143",
+      "style": "solid"
+    },
+    {
+      "source": "Node_144",
+      "target": "Node_145",
+      "style": "solid"
+    },
+    {
+      "source": "Node_145",
+      "target": "Node_146",
+      "style": "solid"
+    },
+    {
+      "source": "Node_145",
+      "target": "Node_147",
+      "style": "solid"
+    },
+    {
+      "source": "Node_146",
+      "target": "Node_148",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_149",
+      "target": "Node_150",
+      "style": "solid"
+    },
+    {
+      "source": "Node_21",
+      "target": "Node_151",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_152",
+      "target": "Node_153",
+      "style": "solid"
+    },
+    {
+      "source": "Node_153",
+      "target": "Node_136",
+      "style": "solid"
+    },
+    {
+      "source": "Node_136",
+      "target": "Node_34",
+      "style": "solid"
+    },
+    {
+      "source": "Node_153",
+      "target": "Node_154",
+      "style": "solid"
+    },
+    {
+      "source": "Node_154",
+      "target": "Node_155",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_39",
+      "target": "Node_154",
+      "style": "solid"
+    },
+    {
+      "source": "Node_21",
+      "target": "Node_152",
+      "style": "solid"
+    },
+    {
+      "source": "Node_21",
+      "target": "Node_156",
+      "style": "solid"
+    },
+    {
+      "source": "Node_156",
+      "target": "Node_159",
+      "style": "solid"
+    },
+    {
+      "source": "Node_156",
+      "target": "Node_94",
+      "style": "solid"
+    },
+    {
+      "source": "Node_156",
+      "target": "Node_23",
+      "style": "solid"
+    },
+    {
+      "source": "Node_23",
+      "target": "Node_157",
+      "style": "solid"
+    },
+    {
+      "source": "Node_157",
+      "target": "Node_158",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_23",
+      "target": "Node_160",
+      "style": "solid"
+    },
+    {
+      "source": "Node_23",
+      "target": "Node_94",
+      "style": "solid"
+    },
+    {
+      "source": "Node_94",
+      "target": "Node_161",
+      "style": "solid"
+    },
+    {
+      "source": "Node_138",
+      "target": "Node_162",
+      "style": "solid"
+    },
+    {
+      "source": "Node_0",
+      "target": "Node_163",
+      "style": "solid"
+    },
+    {
+      "source": "Node_163",
+      "target": "Node_165",
+      "style": "solid"
+    },
+    {
+      "source": "Node_163",
+      "target": "Node_166",
+      "style": "solid"
+    },
+    {
+      "source": "Node_166",
+      "target": "Node_162",
+      "style": "solid"
+    },
+    {
+      "source": "Node_162",
+      "target": "Node_167",
+      "style": "solid"
+    },
+    {
+      "source": "Node_162",
+      "target": "Node_168",
+      "style": "solid"
+    },
+    {
+      "source": "Node_162",
+      "target": "Node_169",
+      "style": "solid"
+    },
+    {
+      "source": "Node_162",
+      "target": "Node_170",
+      "style": "solid"
+    },
+    {
+      "source": "Node_162",
+      "target": "Node_171",
+      "style": "solid"
+    },
+    {
+      "source": "Node_162",
+      "target": "Node_160",
+      "style": "solid"
+    },
+    {
+      "source": "Node_162",
+      "target": "Node_164",
+      "style": "solid"
+    },
+    {
+      "source": "Node_172",
+      "target": "Node_173",
+      "style": "solid"
+    },
+    {
+      "source": "Node_173",
+      "target": "Node_174",
+      "style": "solid"
+    },
+    {
+      "source": "Node_173",
+      "target": "Node_175",
+      "style": "solid"
+    },
+    {
+      "source": "Node_172",
+      "target": "Node_176",
+      "style": "solid"
+    },
+    {
+      "source": "Node_176",
+      "target": "Node_177",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_110",
+      "target": "Node_54",
+      "style": "solid"
+    },
+    {
+      "source": "Node_110",
+      "target": "Node_111",
+      "style": "solid"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_113",
+      "style": "solid"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_114",
+      "style": "solid"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_115",
+      "style": "solid"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_102",
+      "style": "solid"
+    },
+    {
+      "source": "Node_102",
+      "target": "Node_103",
+      "style": "solid"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_116",
+      "style": "solid"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_117",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_118",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_119",
+      "target": "Node_111",
+      "style": "solid"
+    },
+    {
+      "source": "Node_111",
+      "target": "Node_112",
+      "style": "solid"
+    },
+    {
+      "source": "Node_0",
+      "target": "Node_120",
+      "style": "solid"
+    },
+    {
+      "source": "Node_120",
+      "target": "Node_34",
+      "style": "solid"
+    },
+    {
+      "source": "Node_34",
+      "target": "Node_121",
+      "style": "solid"
+    },
+    {
+      "source": "Node_119",
+      "target": "Node_122",
+      "style": "solid"
+    },
+    {
+      "source": "Node_87",
+      "target": "Node_123",
+      "style": "solid"
+    },
+    {
+      "source": "Node_87",
+      "target": "Node_124",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_87",
+      "target": "Node_34",
+      "style": "solid"
+    },
+    {
+      "source": "Node_87",
+      "target": "Node_125",
+      "style": "solid"
+    },
+    {
+      "source": "Node_125",
+      "target": "Node_126",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_10",
+      "target": "Node_50",
+      "style": "solid"
+    },
+    {
+      "source": "Node_10",
+      "target": "Node_16",
+      "style": "solid"
+    },
+    {
+      "source": "Node_50",
+      "target": "Node_134",
+      "style": "solid"
+    },
+    {
+      "source": "Node_127",
+      "target": "Node_26",
+      "style": "solid"
+    },
+    {
+      "source": "Node_128",
+      "target": "Node_87",
+      "style": "solid"
+    },
+    {
+      "source": "Node_32",
+      "target": "Node_126",
+      "style": "dashed"
+    },
+    {
+      "source": "Node_129",
+      "target": "Node_130",
+      "style": "solid"
+    },
+    {
+      "source": "Node_130",
+      "target": "Node_85",
+      "style": "solid"
+    },
+    {
+      "source": "Node_85",
+      "target": "Node_131",
+      "style": "solid"
+    },
+    {
+      "source": "Node_132",
+      "target": "Node_133",
+      "style": "dashed"
+    }
+  ],
+  "ranks": {
+    "Node_0": "2020-03-01",
+    "Node_1": "2020-03-01",
+    "Node_2": "2020-09-01",
+    "Node_3": "2022-11-01",
+    "Node_4": "2023-09-01",
+    "Node_5": "Future",
+    "Node_6": "2020-05-01",
+    "Node_7": "2020-04-01",
+    "Node_8": "2021-08-01",
+    "Node_9": "2023-09-01",
+    "Node_10": "2020-09-01",
+    "Node_11": "2021-06-01",
+    "Node_12": "2020-09-01",
+    "Node_13": "2023-01-01",
+    "Node_14": "2023-09-01",
+    "Node_15": "Future",
+    "Node_16": "2022-08-01",
+    "Node_17": "2021-02-01",
+    "Node_18": "2022-01-01",
+    "Node_19": "2021-07-01",
+    "Node_20": "2022-11-01",
+    "Node_21": "2019-09-01",
+    "Node_22": "2022-03-01",
+    "Node_23": "2022-06-01",
+    "Node_24": "2020-10-01",
+    "Node_25": "2023-01-01",
+    "Node_26": "2021-11-01",
+    "Node_27": "2020-10-01",
+    "Node_28": "2022-06-01",
+    "Node_29": "2021-09-01",
+    "Node_30": "2022-01-01",
+    "Node_31": "Future",
+    "Node_32": "2023-03-01",
+    "Node_33": "Future",
+    "Node_34": "2023-03-01",
+    "Node_35": "2023-05-01",
+    "Node_36": "2020-03-01",
+    "Node_38": "2020-02-01",
+    "Node_39": "2020-07-01",
+    "Node_40": "2021-01-01",
+    "Node_41": "2021-03-01",
+    "Node_42": "2021-11-01",
+    "Node_43": "2023-05-01",
+    "Node_44": "2023-10-01",
+    "Node_45": "2021-01-01",
+    "Node_46": "2021-02-01",
+    "Node_47": "2023-11-01",
+    "Node_48": "2023-11-01",
+    "Node_49": "2023-11-01",
+    "Node_50": "2022-10-01",
+    "Node_51": "2021-11-01",
+    "Node_52": "2023-03-01",
+    "Node_54": "2020-03-01",
+    "Node_55": "2021-03-01",
+    "Node_56": "2021-10-01",
+    "Node_57": "2021-07-01",
+    "Node_58": "2020-06-01",
+    "Node_59": "2021-11-01",
+    "Node_60": "2021-05-01",
+    "Node_61": "2022-03-01",
+    "Node_62": "2020-04-01",
+    "Node_63": "2022-03-01",
+    "Node_64": "2022-03-01",
+    "Node_65": "2022-03-01",
+    "Node_66": "2022-08-01",
+    "Node_67": "2023-03-01",
+    "Node_68": "2023-02-01",
+    "Node_69": "2021-11-01",
+    "Node_70": "2023-03-01",
+    "Node_71": "2022-01-01",
+    "Node_72": "2023-03-01",
+    "Node_73": "2022-09-01",
+    "Node_74": "2022-09-01",
+    "Node_75": "2022-05-01",
+    "Node_76": "2020-01-01",
+    "Node_77": "2023-09-01",
+    "Node_78": "2022-09-01",
+    "Node_79": "2022-07-01",
+    "Node_80": "2023-11-01",
+    "Node_81": "2023-07-01",
+    "Node_82": "2023-03-01",
+    "Node_83": "2023-03-01",
+    "Node_84": "2023-06-01",
+    "Node_85": "2023-10-01",
+    "Node_86": "2023-02-01",
+    "Node_87": "2023-01-01",
+    "Node_88": "2022-09-01",
+    "Node_89": "2023-05-01",
+    "Node_90": "2023-09-01",
+    "Node_91": "2023-08-01",
+    "Node_92": "2023-11-01",
+    "Node_93": "2019-10-01",
+    "Node_94": "2023-06-01",
+    "Node_95": "2020-12-01",
+    "Node_97": "2021-06-01",
+    "Node_101": "2022-06-01",
+    "Node_102": "2020-12-01",
+    "Node_103": "2022-01-01",
+    "Node_104": "Future",
+    "Node_105": "2022-12-01",
+    "Node_106": "2023-06-01",
+    "Node_107": "2023-10-01",
+    "Node_108": "2022-12-01",
+    "Node_109": "2022-12-01",
+    "Node_110": "2019-12-01",
+    "Node_111": "2020-06-01",
+    "Node_112": "2022-09-01",
+    "Node_113": "2021-12-01",
+    "Node_114": "2022-11-01",
+    "Node_115": "2020-09-01",
+    "Node_116": "2023-06-01",
+    "Node_117": "Future",
+    "Node_118": "Future",
+    "Node_119": "2020-06-01",
+    "Node_120": "2020-11-01",
+    "Node_121": "2023-09-01",
+    "Node_122": "2020-12-01",
+    "Node_123": "2023-02-01",
+    "Node_124": "Future",
+    "Node_125": "2023-11-01",
+    "Node_126": "Future",
+    "Node_127": "2021-06-01",
+    "Node_128": "2022-04-01",
+    "Node_129": "2023-05-01",
+    "Node_130": "2023-06-01",
+    "Node_131": "2023-10-01",
+    "Node_132": "2023-03-01",
+    "Node_133": "Future",
+    "Node_134": "2023-10-01",
+    "Node_135": "2020-03-01",
+    "Node_136": "2022-08-01",
+    "Node_137": "2019-10-01",
+    "Node_138": "2019-10-01",
+    "Node_139": "2021-07-01",
+    "Node_140": "2020-02-01",
+    "Node_141": "2021-09-01",
+    "Node_142": "2022-01-01",
+    "Node_143": "2022-06-01",
+    "Node_144": "2021-05-01",
+    "Node_145": "2021-12-01",
+    "Node_146": "2022-10-01",
+    "Node_147": "2023-01-01",
+    "Node_148": "Future",
+    "Node_149": "2019-09-01",
+    "Node_150": "2022-10-01",
+    "Node_151": "Future",
+    "Node_152": "2019-10-01",
+    "Node_153": "2020-12-01",
+    "Node_154": "2022-09-01",
+    "Node_155": "Future",
+    "Node_156": "2020-10-01",
+    "Node_157": "2022-09-01",
+    "Node_158": "Future",
+    "Node_159": "2021-05-01",
+    "Node_160": "2023-07-01",
+    "Node_161": "2023-07-01",
+    "Node_162": "2021-08-01",
+    "Node_163": "2020-03-01",
+    "Node_164": "2023-09-01",
+    "Node_165": "2020-10-01",
+    "Node_166": "2020-05-01",
+    "Node_167": "2021-08-01",
+    "Node_168": "2022-12-01",
+    "Node_169": "2023-07-01",
+    "Node_170": "2022-01-01",
+    "Node_171": "Future",
+    "Node_172": "2023-06-01",
+    "Node_173": "2023-11-01",
+    "Node_174": "2023-11-01",
+    "Node_175": "2023-11-01",
+    "Node_176": "2023-10-01",
+    "Node_177": "Future",
+    "Node_178": "2020-10-01"
+  },
+  "dates": [
+    "2019-09-01",
+    "2019-10-01",
+    "2019-12-01",
+    "2020-01-01",
+    "2020-02-01",
+    "2020-03-01",
+    "2020-04-01",
+    "2020-05-01",
+    "2020-06-01",
+    "2020-07-01",
+    "2020-09-01",
+    "2020-10-01",
+    "2020-11-01",
+    "2020-12-01",
+    "2021-01-01",
+    "2021-02-01",
+    "2021-03-01",
+    "2021-05-01",
+    "2021-06-01",
+    "2021-07-01",
+    "2021-08-01",
+    "2021-09-01",
+    "2021-10-01",
+    "2021-11-01",
+    "2021-12-01",
+    "2022-01-01",
+    "2022-03-01",
+    "2022-04-01",
+    "2022-05-01",
+    "2022-06-01",
+    "2022-07-01",
+    "2022-08-01",
+    "2022-09-01",
+    "2022-10-01",
+    "2022-11-01",
+    "2022-12-01",
+    "2023-01-01",
+    "2023-02-01",
+    "2023-03-01",
+    "2023-05-01",
+    "2023-06-01",
+    "2023-07-01",
+    "2023-08-01",
+    "2023-09-01",
+    "2023-10-01",
+    "2023-11-01",
+    "Future"
+  ]
+}

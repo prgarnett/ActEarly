@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Effects Map - Interactive Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        #container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        #title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        #controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        button {
+            padding: 8px 16px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        #legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-radius: 3px;
+        }
+        
+        #visualization {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .node {
+            cursor: pointer;
+        }
+        
+        .node:hover {
+            stroke: #000;
+            stroke-width: 3px;
+        }
+        
+        .node-label {
+            pointer-events: none;
+            font-size: 11px;
+            text-anchor: middle;
+        }
+        
+        .timeline-label {
+            pointer-events: none;
+            font-size: 14px;
+            font-weight: bold;
+            fill: #666;
+        }
+        
+        .edge {
+            fill: none;
+            pointer-events: none;
+        }
+        
+        .edge-solid {
+            stroke: #999;
+            stroke-width: 1.5px;
+        }
+        
+        .edge-dashed {
+            stroke: #bbb;
+            stroke-width: 1.5px;
+            stroke-dasharray: 5,5;
+        }
+        
+        .timeline-edge {
+            stroke: #333;
+            stroke-width: 3px;
+            marker-end: url(#timeline-arrow);
+        }
+        
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 5px;
+            pointer-events: none;
+            font-size: 12px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="title">Ripple Effects Map - ActEarly Project Timeline</div>
+        
+        <div id="controls">
+            <button onclick="resetZoom()">Reset Zoom</button>
+            <button onclick="fitToScreen()">Fit to Screen</button>
+            <button onclick="toggleLabels()">Toggle Labels</button>
+        </div>
+        
+        <div id="legend">
+            <div class="legend-item">
+                <div class="legend-box" style="background: #ff6b6b;"></div>
+                <span>Input</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #4ecdc4;"></div>
+                <span>Activity</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #95e1d3;"></div>
+                <span>Output</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #ffe66d;"></div>
+                <span>Impact</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #a8e6cf;"></div>
+                <span>Outcome</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #dfe6e9;"></div>
+                <span>Timeline</span>
+            </div>
+        </div>
+        
+        <div id="visualization"></div>
+    </div>
+    
+    <div class="tooltip" id="tooltip" style="display: none;"></div>
+    
+    <script>
+        // Configuration
+        const width = window.innerWidth - 40;
+        const height = window.innerHeight - 300;
+        const timelineWidth = 150;
+        
+        let showLabels = true;
+        let labelsGroup;
+        
+        // Color mapping for node types
+        const colors = {
+            'Input': '#ff6b6b',
+            'Activity': '#4ecdc4',
+            'Output': '#95e1d3',
+            'Impact': '#ffe66d',
+            'Outcome': '#a8e6cf',
+            'timeline': '#dfe6e9'
+        };
+        
+        // Create SVG
+        const svg = d3.select("#visualization")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+        
+        // Add arrow marker for timeline
+        svg.append("defs").append("marker")
+            .attr("id", "timeline-arrow")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 8)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "#333");
+        
+        // Add arrow markers for edges
+        svg.append("defs").append("marker")
+            .attr("id", "arrow")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 20)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "#999");
+        
+        // Create main group for zoom/pan
+        const g = svg.append("g");
+        
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+        
+        svg.call(zoom);
+        
+        // Tooltip
+        const tooltip = d3.select("#tooltip");
+        
+        // Load data and create visualization
+        d3.json("rem_graph_data.json").then(data => {
+            console.log("Loaded data:", data);
+            
+            // Separate timeline nodes from regular nodes
+            const timelineNodes = data.nodes.filter(n => n.shape === 'timeline');
+            const regularNodes = data.nodes.filter(n => n.shape !== 'timeline');
+            
+            // Calculate positions for timeline (vertical on the left)
+            const timelineY = d3.scalePoint()
+                .domain(data.dates)
+                .range([50, height - 50])
+                .padding(0.5);
+            
+            // Position timeline nodes
+            timelineNodes.forEach(node => {
+                node.x = timelineWidth / 2;
+                node.y = timelineY(node.id);
+                node.fx = node.x; // Fix position
+                node.fy = node.y;
+            });
+            
+            // Create a date-to-Y mapping for positioning regular nodes
+            const datePositions = {};
+            data.dates.forEach(date => {
+                datePositions[date] = timelineY(date);
+            });
+            
+            // Position regular nodes based on their rank
+            regularNodes.forEach(node => {
+                const rankedDate = data.ranks[node.id];
+                if (rankedDate) {
+                    node.fy = datePositions[rankedDate]; // Fix Y position to align with date
+                }
+            });
+            
+            // Combine all nodes
+            const allNodes = [...timelineNodes, ...regularNodes];
+            
+            // Separate timeline edges from regular edges
+            const timelineEdges = [];
+            const regularEdges = [];
+            
+            data.edges.forEach(edge => {
+                const isTimelineEdge = data.dates.includes(edge.source) && data.dates.includes(edge.target);
+                if (isTimelineEdge) {
+                    timelineEdges.push(edge);
+                } else {
+                    regularEdges.push(edge);
+                }
+            });
+            
+            // Create force simulation
+            const simulation = d3.forceSimulation(allNodes)
+                .force("link", d3.forceLink(regularEdges)
+                    .id(d => d.id)
+                    .distance(100))
+                .force("charge", d3.forceManyBody()
+                    .strength(-300))
+                .force("x", d3.forceX()
+                    .x(d => d.shape === 'timeline' ? timelineWidth / 2 : width / 2)
+                    .strength(d => d.shape === 'timeline' ? 1 : 0.1))
+                .force("y", d3.forceY()
+                    .y(d => d.fy || height / 2)
+                    .strength(d => d.fy ? 1 : 0.1))
+                .force("collision", d3.forceCollide().radius(30));
+            
+            // Draw timeline edges
+            const timelineEdgeGroup = g.append("g").attr("class", "timeline-edges");
+            const timelineEdgeSelection = timelineEdgeGroup.selectAll(".timeline-edge")
+                .data(timelineEdges)
+                .join("line")
+                .attr("class", "timeline-edge");
+            
+            // Draw regular edges
+            const edgeGroup = g.append("g").attr("class", "edges");
+            const edgeSelection = edgeGroup.selectAll(".edge")
+                .data(regularEdges)
+                .join("line")
+                .attr("class", d => `edge edge-${d.style}`)
+                .attr("marker-end", d => d.style === 'solid' ? "url(#arrow)" : null);
+            
+            // Draw nodes
+            const nodeGroup = g.append("g").attr("class", "nodes");
+            const nodeSelection = nodeGroup.selectAll(".node")
+                .data(allNodes)
+                .join("rect")
+                .attr("class", "node")
+                .attr("width", d => d.shape === 'timeline' ? 120 : 15)
+                .attr("height", d => d.shape === 'timeline' ? 30 : 15)
+                .attr("rx", 3)
+                .attr("fill", d => colors[d.shape] || '#999')
+                .attr("stroke", "#333")
+                .attr("stroke-width", 1)
+                .on("mouseover", (event, d) => {
+                    tooltip
+                        .style("display", "block")
+                        .html(`<strong>${d.label}</strong><br/>Type: ${d.shape}`);
+                })
+                .on("mousemove", (event) => {
+                    tooltip
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 10) + "px");
+                })
+                .on("mouseout", () => {
+                    tooltip.style("display", "none");
+                })
+                .call(drag(simulation));
+            
+            // Draw labels
+            labelsGroup = g.append("g").attr("class", "labels");
+            const labelSelection = labelsGroup.selectAll(".node-label")
+                .data(allNodes)
+                .join("text")
+                .attr("class", d => d.shape === 'timeline' ? 'timeline-label' : 'node-label')
+                .attr("dy", d => d.shape === 'timeline' ? 5 : 25)
+                .text(d => {
+                    if (d.shape === 'timeline') return d.label;
+                    // Truncate long labels for non-timeline nodes
+                    return d.label.length > 30 ? d.label.substring(0, 30) + '...' : d.label;
+                });
+            
+            // Update positions on simulation tick
+            simulation.on("tick", () => {
+                // Update timeline edges
+                timelineEdgeSelection
+                    .attr("x1", d => {
+                        const source = allNodes.find(n => n.id === d.source);
+                        return source.x;
+                    })
+                    .attr("y1", d => {
+                        const source = allNodes.find(n => n.id === d.source);
+                        return source.y;
+                    })
+                    .attr("x2", d => {
+                        const target = allNodes.find(n => n.id === d.target);
+                        return target.x;
+                    })
+                    .attr("y2", d => {
+                        const target = allNodes.find(n => n.id === d.target);
+                        return target.y;
+                    });
+                
+                // Update regular edges
+                edgeSelection
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+                
+                // Update nodes
+                nodeSelection
+                    .attr("x", d => d.x - (d.shape === 'timeline' ? 60 : 7.5))
+                    .attr("y", d => d.y - (d.shape === 'timeline' ? 15 : 7.5));
+                
+                // Update labels
+                labelSelection
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y);
+            });
+            
+            // Fit to screen on load
+            setTimeout(() => fitToScreen(), 1000);
+        });
+        
+        // Drag behavior
+        function drag(simulation) {
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                if (!d.fy) d.fy = d.y; // Only fix Y if not already fixed
+            }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                if (!data.ranks[d.id]) { // Only allow Y movement if not ranked to timeline
+                    d.fy = event.y;
+                }
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                if (d.shape !== 'timeline' && !data.ranks[d.id]) {
+                    d.fx = null;
+                    d.fy = null;
+                }
+            }
+            
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+        
+        // Control functions
+        function resetZoom() {
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity);
+        }
+        
+        function fitToScreen() {
+            const bounds = g.node().getBBox();
+            const fullWidth = width;
+            const fullHeight = height;
+            const midX = bounds.x + bounds.width / 2;
+            const midY = bounds.y + bounds.height / 2;
+            
+            const scale = 0.9 / Math.max(bounds.width / fullWidth, bounds.height / fullHeight);
+            const translate = [fullWidth / 2 - scale * midX, fullHeight / 2 - scale * midY];
+            
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
+        }
+        
+        function toggleLabels() {
+            showLabels = !showLabels;
+            if (labelsGroup) {
+                labelsGroup.style("display", showLabels ? "block" : "none");
+            }
+        }
+    </script>
+</body>
+</html>
