@@ -2,8 +2,8 @@
 This is a repository of some of the systems work on ActEarly, a 5 year research project based in Bradford and Towerhamlets. You can read more about ActEarly [here](https://actearly.org.uk/).
 
 The following aspects of the Research at inlcuded below:
-- The visualisation of the mapping of ActEarly projects onto the Child Health System.
-- A Ripple Effects Map tracking the impact of the work do during ActEarly.
+- [The visualisation of the mapping of ActEarly projects onto the Child Health System.](#Visualisation-of-the-Where-ActEarly-Projects-were-in-the-Child-Health-System)
+- [A Ripple Effects Map tracking the impact of the work do during ActEarly](#Ripple-Effects-Mapping).
 
 ## Visualisation of the Where ActEarly Projects were in the Child Health System
 In the image the network was developed from the paper [A systems map of the determinants of child health inequalities in England at the local level](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0245577), and the size of the nodes shows the number ActEarly projects that map to that part of the child health system. An interactive version of this visualisation is availble [here](https://prgarnett.github.io/ActEarly/interactive_network.html). This research has been published in PlosOne, [Mapping ActEarly: Using a child health map to evaluate a City Collaboratory programme on early promotion of good health and wellbeing](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0326825).
