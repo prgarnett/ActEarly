@@ -7,4 +7,4 @@ In the image the network was developed from the paper [A systems map of the dete
 
 ## Ripple Effects Mapping
 We also did some work tracking the ripple effects of aspect of the ActEarly project. An image of the full map is below, and there is a reasonable version of an interactive map available [here](https://prgarnett.github.io/ActEarly/ripple_effects_map.html).
-![Act Early Ripple Effects Mapping](Rem_Full_map.png')
+![Act Early Ripple Effects Mapping](Rem_Full_map.png)
