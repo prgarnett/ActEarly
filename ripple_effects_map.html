@@ -98,7 +98,7 @@
         
         .timeline-label {
             pointer-events: none;
-            font-size: 14px;
+            font-size: 10px;
             font-weight: bold;
             fill: #666;
         }
@@ -120,6 +120,7 @@
         }
         
         .timeline-edge {
+            fill: none;
             stroke: #333;
             stroke-width: 3px;
             marker-end: url(#timeline-arrow);
@@ -222,7 +223,7 @@
         svg.append("defs").append("marker")
             .attr("id", "arrow")
             .attr("viewBox", "0 -5 10 10")
-            .attr("refX", 20)
+            .attr("refX", 15)
             .attr("refY", 0)
             .attr("markerWidth", 6)
             .attr("markerHeight", 6)
@@ -317,14 +318,14 @@
             const timelineEdgeGroup = g.append("g").attr("class", "timeline-edges");
             const timelineEdgeSelection = timelineEdgeGroup.selectAll(".timeline-edge")
                 .data(timelineEdges)
-                .join("line")
+                .join("path")
                 .attr("class", "timeline-edge");
             
             // Draw regular edges
             const edgeGroup = g.append("g").attr("class", "edges");
             const edgeSelection = edgeGroup.selectAll(".edge")
                 .data(regularEdges)
-                .join("line")
+                .join("path")
                 .attr("class", d => `edge edge-${d.style}`)
                 .attr("marker-end", d => d.style === 'solid' ? "url(#arrow)" : null);
             
@@ -368,33 +369,42 @@
                     return d.label.length > 30 ? d.label.substring(0, 30) + '...' : d.label;
                 });
             
+            // Helper function to create curved path
+            function createCurvedPath(x1, y1, x2, y2) {
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                const dr = Math.sqrt(dx * dx + dy * dy);
+                
+                // Create a gentle curve
+                const curve = dr * 0.3;
+                const midX = (x1 + x2) / 2;
+                const midY = (y1 + y2) / 2;
+                
+                // Offset the control point perpendicular to the line
+                const offsetX = -dy / dr * curve;
+                const offsetY = dx / dr * curve;
+                
+                const cx = midX + offsetX;
+                const cy = midY + offsetY;
+                
+                return `M ${x1},${y1} Q ${cx},${cy} ${x2},${y2}`;
+            }
+            
             // Update positions on simulation tick
             simulation.on("tick", () => {
                 // Update timeline edges
                 timelineEdgeSelection
-                    .attr("x1", d => {
+                    .attr("d", d => {
                         const source = allNodes.find(n => n.id === d.source);
-                        return source.x;
-                    })
-                    .attr("y1", d => {
-                        const source = allNodes.find(n => n.id === d.source);
-                        return source.y;
-                    })
-                    .attr("x2", d => {
                         const target = allNodes.find(n => n.id === d.target);
-                        return target.x;
-                    })
-                    .attr("y2", d => {
-                        const target = allNodes.find(n => n.id === d.target);
-                        return target.y;
+                        return createCurvedPath(source.x, source.y, target.x, target.y);
                     });
                 
                 // Update regular edges
                 edgeSelection
-                    .attr("x1", d => d.source.x)
-                    .attr("y1", d => d.source.y)
-                    .attr("x2", d => d.target.x)
-                    .attr("y2", d => d.target.y);
+                    .attr("d", d => {
+                        return createCurvedPath(d.source.x, d.source.y, d.target.x, d.target.y);
+                    });
                 
                 // Update nodes
                 nodeSelection
